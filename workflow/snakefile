@@ -1,0 +1,30 @@
+BAMs, = glob_wildcards("resources/{id}.bam") # Bam files to iterate across
+VCFs, = glob_wildcards("resources/{id}.vcf.gz") # VCF files to iterate across
+
+rule all:
+  input: expand("results/{id}.bam", id=BAMs) \
+        ,expand("results/{id}.vcf.gz", id=VCFs)
+  output:
+  shell:
+    """
+        true
+    """
+
+rule mv_bams:
+  input:
+    I="resources/{id}.bam"
+  output:
+    O="results/{id}.bam",
+  shell:
+    "mv -f {input.I} {output.O}"
+      
+
+rule mv_vcfs:
+  input:
+    I="resources/{id}.vcf.gz"
+  output:
+    O="results/{id}.vcf.gz",
+  shell:
+    "mv -f {input.I} {output.O}"
+      
+
