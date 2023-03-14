@@ -32,4 +32,4 @@ Note that this workflow is unlikely to be approved for usage in
 the Rakeiora portal, because it returns raw data to your
 results directory.
 
-But it may be helpful for you in workflow development.
+But it may be helpful for you in workflow development.x
