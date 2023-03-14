@@ -29,7 +29,7 @@ rule all:
   output:
   shell:
     """
-        true
+        true # comment
     """
 
 rule mv_bams:
