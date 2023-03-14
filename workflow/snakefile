@@ -1,3 +1,25 @@
+# Workflow for usage in Rakeiora sandbox for the purposes
+# of generating BAM and/or VCF files from the sample datasets
+# available in the sandbox.
+#
+# Pull this repository into Rakeiora sandbox and define inputs
+# as you like: If you want some BAM (reads) data, define an
+# input that will prompt you for reads, single (or multi, if you want them)
+# normal (or tissue, if you want them), merged however
+# you want them.
+#
+# Then do a test run. Rakeiora will prompt you for these
+# inputs and gather the ones that you select into the resources
+# directory, and then this workflow will move them into the
+# results directory. "results" is one of the directories that
+# is copied to your jupyter hub, so you will have the datafiles
+# available to you there for download or other analysis.
+#
+# Note that this workflow is unlikely to be approved for usage in
+# the Rakeiora portal, because it returns raw data to your
+# results directory.
+
+
 BAMs, = glob_wildcards("resources/{id}.bam") # Bam files to iterate across
 VCFs, = glob_wildcards("resources/{id}.vcf.gz") # VCF files to iterate across
 
@@ -26,5 +48,3 @@ rule mv_vcfs:
     O="results/{id}.vcf.gz",
   shell:
     "mv -f {input.I} {output.O}"
-      
-
